@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echoes of Isolation | A Voice-Responsive Paranormal Horror Game</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- PARTICLES / FOG CANVAS -->
+  <canvas id="fogCanvas"></canvas>
+
+  <!-- CURSOR -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-trail" id="cursorTrail"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">
+        <span class="brand-icon"><i class="fas fa-ghost"></i></span>
+        <span class="brand-text">ECHOES OF ISOLATION</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#intro">Story</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#enemies">Enemies</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gameplay">Gameplay</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta" href="#multiplayer">Coming Soon</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================== HERO SECTION ======================== -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal-up" data-delay="0">
+        <span class="eyebrow-line"></span>
+        <span>FINAL YEAR PROJECT — COMSATS UNIVERSITY ISLAMABAD</span>
+        <span class="eyebrow-line"></span>
+      </div>
+
+      <h1 class="hero-title reveal-up" data-delay="200">
+        <span class="title-line line-1">ECHOES</span>
+        <span class="title-line line-2">OF</span>
+        <span class="title-line line-3">ISOLATION</span>
+      </h1>
+
+      <p class="hero-subtitle reveal-up" data-delay="600">
+        A Voice-Responsive Paranormal Horror Game<br />
+        <em>where silence is survival.</em>
+      </p>
+
+      <div class="hero-mic-indicator reveal-up" data-delay="900">
+        <div class="mic-pulse">
+          <i class="fas fa-microphone"></i>
+        </div>
+        <span class="mic-label">YOUR VOICE IS THE CONTROLLER</span>
+      </div>
+
+      <div class="hero-buttons reveal-up" data-delay="1100">
+        <a href="#intro" class="btn-horror btn-explore">
+          <span class="btn-text">EXPLORE THE DARKNESS</span>
+          <span class="btn-glow"></span>
+        </a>
+        <a href="#features" class="btn-horror btn-ghost">
+          <span class="btn-text">VIEW FEATURES</span>
+        </a>
+      </div>
+
+      <div class="hero-scroll-hint">
+        <div class="scroll-arrow">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <span>SCROLL TO DESCEND</span>
+      </div>
+    </div>
+
+    <div class="hero-bottom-fade"></div>
+  </section>
+
+  <!-- ======================== INTRODUCTION SECTION ======================== -->
+  <section id="intro" class="intro-section section-pad">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 reveal-left">
+          <div class="intro-visual">
+            <div class="intro-frame">
+              <div class="frame-corner tl"></div>
+              <div class="frame-corner tr"></div>
+              <div class="frame-corner bl"></div>
+              <div class="frame-corner br"></div>
+              <div class="intro-inner-visual">
+                <img src="images/intro.png" alt="Echoes of Isolation" class="intro-image">
+                <div class="static-noise"></div>
+                <div class="float-orbs">
+                  <span class="orb o1"></span>
+                  <span class="orb o2"></span>
+                  <span class="orb o3"></span>
+                </div>
+                <div class="static-noise"></div>
+              </div>
+            </div>
+            <div class="intro-badge">
+              <i class="fas fa-microphone-alt"></i>
+              <span>VOICE-REACTIVE</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7 reveal-right">
+          <div class="section-label">// THE STORY BEGINS</div>
+          <h2 class="section-title">Where Every Breath<br /><span class="red-text">Betrays You</span></h2>
+          <div class="section-divider"></div>
+          <p class="body-text">
+            <strong class="red-text">Echoes of Isolation</strong> is a first-person survival horror experience built
+            inside an abandoned psychiatric hospital — a place where the walls remember every scream, every whisper, and
+            every desperate plea for escape.
+          </p>
+          <p class="body-text">
+            Unlike any horror game before it, <em>Echoes of Isolation</em> introduces a groundbreaking microphone-based
+            gameplay mechanic: your real-world voice is your greatest weapon — and your most dangerous liability.
+            Breathe
+            too loudly, and something will hear you. Whisper a ritual incantation, and the veil between worlds grows
+            thin.
+          </p>
+          <p class="body-text">
+            Built on <strong>Unreal Engine 5</strong> with real-time audio analysis via the Unreal Audio Capture API,
+            every sound you produce is captured, measured, and translated into game-world consequences. The result is
+            psychological horror so immersive, your instinct is to hold your breath.
+          </p>
+          <div class="intro-stats">
+            <div class="stat-item">
+              <span class="stat-num" data-count="6">0</span>
+              <span class="stat-label">Core Modules</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-count="3">0</span>
+              <span class="stat-label">Unique Enemies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num" data-count="3">0</span>
+              <span class="stat-label">Stages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROJECT OVERVIEW ======================== -->
+  <section id="overview" class="overview-section section-pad">
+    <div class="overview-bg-grid"></div>
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// PROJECT OVERVIEW</div>
+        <h2 class="section-title">The Architecture<br />of <span class="red-text">Terror</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="0">
+          <div class="overview-card">
+            <div class="ov-icon"><i class="fas fa-book-dead"></i></div>
+            <h4>The Story</h4>
+            <p>You are trapped inside Psychiatric Hospital. The only way out is through a forbidden ritual — but
+              completing it will wake everything that sleeps within these walls.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="150">
+          <div class="overview-card">
+            <div class="ov-icon"><i class="fas fa-shield-alt"></i></div>
+            <h4>Survival Mechanics</h4>
+            <p>Manage your steps, control your breath, and navigate total darkness. The hospital punishes the reckless
+              and rewards the methodical — every move carries consequence.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="300">
+          <div class="overview-card">
+            <div class="ov-icon"><i class="fas fa-microphone"></i></div>
+            <h4>Voice-Responsive Play</h4>
+            <p>Real-time audio input shapes the world around you. Ambient volume, frequency detection, and silence
+              thresholds drive enemy states, environmental events, and paranormal escalation.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="450">
+          <div class="overview-card">
+            <div class="ov-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <h4>Exploration & Puzzles</h4>
+            <p>Discover hidden wards, collect ritual relics, and solve cryptic puzzles to unlock deeper secrets of
+              Hospital — every corridor holds a clue and a consequence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CORE FEATURES ======================== -->
+  <section id="features" class="features-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// CORE FEATURES</div>
+        <h2 class="section-title">Systems of <span class="red-text">Fear</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-sub">Eight integrated systems designed to make horror personal, reactive, and inescapable.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Feature Cards -->
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="0">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-wave-square"></i></div>
+            <h5>Real-Time Voice Detection</h5>
+            <p>Microphone input is sampled at 60fps using Unreal Audio Capture. Volume amplitude, frequency, and silence
+              duration are all parsed to trigger distinct game events.</p>
+            <div class="fc-tag">AUDIO ENGINE</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="100">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-brain"></i></div>
+            <h5>Enemy System</h5>
+            <p>Advanced Behavior Trees drive enemy state machines . Enemies dynamically patrol,
+              investigate sounds, enter hunt mode, and de-escalate based on audio cues.</p>
+            <div class="fc-tag">Blueprints</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="200">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-heartbeat"></i></div>
+            <h5>Sanity System</h5>
+            <p>A dynamic psychological meter that degrades upon prolonged darkness, enemy proximity, or paranormal
+              events. Hallucinations, audio distortions, and screen corruption manifest at critical levels.</p>
+            <div class="fc-tag">PSYCHOLOGY</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="300">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-scroll"></i></div>
+            <h5>Puzzle & Ritual Mechanics</h5>
+            <p>Eight unique relic-collection puzzles unlock stages of the final ritual. Ritual sequences require
+              specific voice commands spoken aloud — silence your fear to survive.</p>
+            <div class="fc-tag">GAMEPLAY</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="400">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-backpack"></i></div>
+            <h5>Inventory System</h5>
+            <p>A full horror-themed inventory with relic tracking, item combination, and limited carrying capacity —
+              forcing strategic decisions in a world where every second counts.</p>
+            <div class="fc-tag">SYSTEMS</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="500">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-bolt"></i></div>
+            <h5>Dynamic Horror Events</h5>
+            <p>Procedurally triggered paranormal sequences: flickering lights, whispered voices, shadow movements,
+              poltergeist activity — all scaled to your current sanity and noise level.</p>
+            <div class="fc-tag">EVENTS</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="600">
+          <div class="feature-card">
+            <div class="fc-glow"></div>
+            <div class="fc-icon"><i class="fas fa-map-marked-alt"></i></div>
+            <h5>Exploration System</h5>
+            <p>Non-linear hospital layout with 5 unique wards, hidden rooms, lore journals, and environmental
+              storytelling. Every corner reveals a fragment of Ashwood's dark history.</p>
+            <div class="fc-tag">WORLD</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal-up" data-delay="700">
+          <div class="feature-card featured-card">
+            <div class="fc-glow fc-glow-intense"></div>
+            <div class="fc-icon"><i class="fas fa-door-open"></i></div>
+            <h5>Ritual Escape Sequence</h5>
+            <p>The climactic finale: complete a multi-stage ritual while all enemies converge on your position. Your
+              voice must carry the incantation — but every word you speak makes you more vulnerable.</p>
+            <div class="fc-tag">FINALE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== ENEMIES SECTION ======================== -->
+  <section id="enemies" class="enemies-section section-pad">
+    <div class="enemies-atmospheric"></div>
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// PARANORMAL ENTITIES</div>
+        <h2 class="section-title">Those Who <span class="red-text">Hunt You</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-sub">Three entities, three behaviors — each triggered by your voice, your fear, your choices.
+        </p>
+      </div>
+
+      <div class="row g-5 justify-content-center">
+        <div class="col-lg-4 col-md-6 reveal-up" data-delay="0">
+          <div class="enemy-card">
+            <div class="enemy-glow enemy-glow-1"></div>
+            <div class="enemy-symbol"><i class="fas fa-cross"></i></div>
+            <div class="enemy-number">01</div>
+            <h3 class="enemy-name">The Nun Ghost</h3>
+            <div class="enemy-divider"></div>
+            <p class="enemy-desc">
+              A silent, looming figure draped in tattered habit. She does not run — she glides. She is drawn exclusively
+              to sound and appears when ambient noise exceeds critical thresholds.
+            </p>
+            <div class="enemy-triggers">
+              <div class="trigger-label">TRIGGER CONDITIONS</div>
+              <div class="trigger-item"><i class="fas fa-volume-up"></i> Loud voice or shouting detected</div>
+              <div class="trigger-item"><i class="fas fa-walking"></i> Located in rooms & corridors</div>
+              <div class="trigger-item"><i class="fas fa-lightbulb"></i> Activating electronic devices</div>
+            </div>
+            <div class="enemy-effect">
+              <i class="fas fa-skull"></i>
+              <span>Induces audio hallucinations — a whispered name only you can hear.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 reveal-up" data-delay="200">
+          <div class="enemy-card enemy-card-center">
+            <div class="enemy-glow enemy-glow-2"></div>
+            <div class="enemy-symbol"><i class="fas fa-syringe"></i></div>
+            <div class="enemy-number">02</div>
+            <h3 class="enemy-name">The Surgeon Spirit</h3>
+            <div class="enemy-divider"></div>
+            <p class="enemy-desc">
+              An apparition in bloodied surgical attire, still holding instruments from an operation never completed. He
+              activates when sanity falls to critical levels — a manifestation of your fracturing mind.
+            </p>
+            <div class="enemy-triggers">
+              <div class="trigger-label">TRIGGER CONDITIONS</div>
+              <div class="trigger-item"><i class="fas fa-heartbeat"></i> Sanity below 25%</div>
+              <div class="trigger-item"><i class="fas fa-moon"></i> Prolonged darkness exposure</div>
+              <div class="trigger-item"><i class="fas fa-exclamation"></i> Panic-breathing detected</div>
+            </div>
+            <div class="enemy-effect">
+              <i class="fas fa-skull"></i>
+              <span>Corrupts the HUD and inverts player controls during pursuit.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 reveal-up" data-delay="400">
+          <div class="enemy-card">
+            <div class="enemy-glow enemy-glow-3"></div>
+            <div class="enemy-symbol"><i class="fas fa-user-slash"></i></div>
+            <div class="enemy-number">03</div>
+            <h3 class="enemy-name">Shadow Patients</h3>
+            <div class="enemy-divider"></div>
+            <p class="enemy-desc">
+              A collective of featureless silhouettes that emerge from walls, floors, and ceilings. They swarm when
+              ritual activity is detected — drawn to the energy of forbidden ceremonies.
+            </p>
+            <div class="enemy-triggers">
+              <div class="trigger-label">TRIGGER CONDITIONS</div>
+              <div class="trigger-item"><i class="fas fa-scroll"></i> Ritual relic collected</div>
+              <div class="trigger-item"><i class="fas fa-fire"></i> Puzzle sequence completed</div>
+              <div class="trigger-item"><i class="fas fa-microphone-alt"></i> Ritual words spoken aloud</div>
+            </div>
+            <div class="enemy-effect">
+              <i class="fas fa-skull"></i>
+              <span>Causes screen static and temporary voice-input jamming.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== GAMEPLAY MECHANICS ======================== -->
+  <section id="gameplay" class="gameplay-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// GAMEPLAY LOOP</div>
+        <h2 class="section-title">The Path Through <span class="red-text">Darkness</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+
+      <div class="gameplay-timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-timeline" data-delay="0">
+          <div class="ti-number">01</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-door-open"></i></div>
+            <h5>Enter the Hospital</h5>
+            <p>You awaken at the gates of Ashwood Psychiatric Hospital. The gate shuts behind you. Silence is your only
+              ally.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item ti-right reveal-timeline" data-delay="150">
+          <div class="ti-number">02</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-search"></i></div>
+            <h5>Explore the Wards</h5>
+            <p>Navigate five distinct hospital wings — each with unique atmospheric horror, environmental puzzles, and
+              lurking threats.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item reveal-timeline" data-delay="300">
+          <div class="ti-number">03</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-gem"></i></div>
+            <h5>Collect the Relics</h5>
+            <p>Eight ritual relics are hidden across Ashwood. Finding each triggers escalating paranormal activity —
+              nothing in this hospital is without cost.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item ti-right reveal-timeline" data-delay="450">
+          <div class="ti-number">04</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <h5>Solve the Puzzles</h5>
+            <p>Environmental puzzles lock your path forward. Voice-activated mechanisms, symbol sequences, and cryptic
+              journals hold the solutions.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item reveal-timeline" data-delay="600">
+          <div class="ti-number">05</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-ghost"></i></div>
+            <h5>Trigger the Enemies</h5>
+            <p>As ritual power grows, the three entities awaken — Nun Ghost, Surgeon Spirit, and Shadow Patients
+              converge on your location. Control your voice. Control your fear.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item ti-right reveal-timeline" data-delay="750">
+          <div class="ti-number">06</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-fire-alt"></i></div>
+            <h5>Perform the Ritual</h5>
+            <p>Speak the incantation aloud. Eight relics placed. Candles lit. Every word you utter draws them closer.
+              Complete the ritual before they reach you.</p>
+          </div>
+          <div class="ti-connector"></div>
+        </div>
+
+        <div class="timeline-item reveal-timeline" data-delay="900">
+          <div class="ti-number">07</div>
+          <div class="ti-content">
+            <div class="ti-icon"><i class="fas fa-running"></i></div>
+            <h5>Escape — or Face the End</h5>
+            <p>The exit opens. Run. Don't speak. Don't breathe. Reach the gate — or become another echo trapped in these
+              walls forever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== GALLERY SECTION ======================== -->
+  <section id="gallery" class="gallery-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// VISUAL ATMOSPHERE</div>
+        <h2 class="section-title">Inside <span class="red-text">Ashwood</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-sub">Environmental design concepts from the abandoned corridors of Ashwood Psychiatric
+          Hospital.</p>
+      </div>
+
+      <div class="gallery-grid reveal-up">
+        <div class="gallery-item gi-large">
+          <div class="gallery-img" style="background-image: url('images/enemy.png');">
+            <div class="gi-overlay">
+              <div class="gi-label">Main Entrance Hall</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('images/hall.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">Operating Theatre</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('images/2.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">Ward C — The Forgotten</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('images/3.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">The Chapel</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-item gi-wide">
+          <div class="gallery-img" style="background-image: url('images/4.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">The Ritual Chamber</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('images/4.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">The Basement Corridors</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== TECH STACK ======================== -->
+  <section id="tech" class="tech-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// DEVELOPMENT TOOLS</div>
+        <h2 class="section-title">Built With <span class="red-text">Precision</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2 reveal-up" data-delay="0">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-cube"></i></div>
+            <div class="tech-name">Unreal Engine 5</div>
+            <div class="tech-bar">
+              <div class="tech-fill" style="width:95%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal-up" data-delay="100">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-code"></i></div>
+            <div class="tech-name">C++</div>
+            <div class="tech-bar">
+              <div class="tech-fill" style="width:85%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal-up" data-delay="200">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-project-diagram"></i></div>
+            <div class="tech-name">Blueprints</div>
+            <div class="tech-bar">
+              <div class="tech-fill" style="width:90%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal-up" data-delay="300">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-music"></i></div>
+            <div class="tech-name">FMOD / Wwise</div>
+            <div class="tech-bar">
+              <div class="tech-fill" style="width:80%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal-up" data-delay="400">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-laptop-code"></i></div>
+            <div class="tech-name">Visual Studio 2022</div>
+            <div class="tech-bar">
+              <div class="tech-fill" style="width:88%"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== MULTIPLAYER COMING SOON ======================== -->
+  <section id="multiplayer" class="multiplayer-section section-pad">
+    <div class="mp-bg"></div>
+    <div class="mp-grid"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 reveal-left">
+          <div class="coming-soon-badge">
+            <span class="cs-dot"></span>
+            COMING SOON
+          </div>
+          <h2 class="section-title mt-3">Multiplayer<br /><span class="red-text">Expansion</span></h2>
+          <div class="section-divider"></div>
+          <p class="body-text">The horror doesn't have to be faced alone. The next chapter of Echoes of Isolation opens
+            Ashwood to teams of paranormal investigators — each carrying a microphone, each responsible for one
+            another's survival.</p>
+          <div class="mp-features">
+            <div class="mp-feat"><i class="fas fa-users"></i><span>Co-op team survival (2-4 players)</span></div>
+            <div class="mp-feat"><i class="fas fa-comments"></i><span>Real-time voice proximity chat</span></div>
+            <div class="mp-feat"><i class="fas fa-scroll"></i><span>Shared multi-player ritual mechanics</span></div>
+            <div class="mp-feat"><i class="fas fa-globe"></i><span>Online paranormal investigation mode</span></div>
+            <div class="mp-feat"><i class="fas fa-shield-alt"></i><span>Role-based team survival roles</span></div>
+          </div>
+          <a href="#subscription" class="btn-horror btn-explore mt-4">
+            <span class="btn-text">GET NOTIFIED</span>
+            <span class="btn-glow"></span>
+          </a>
+        </div>
+        <div class="col-lg-6 reveal-right">
+          <div class="mp-visual">
+            <div class="mp-screen">
+              <div class="mp-screen-inner">
+                <div class="mp-icons-grid">
+                  <div class="mp-player-icon"><i class="fas fa-user"></i><span>PLAYER 1</span></div>
+                  <div class="mp-player-icon mp-inactive"><i class="fas fa-user-clock"></i><span>PLAYER 2</span></div>
+                  <div class="mp-player-icon mp-inactive"><i class="fas fa-user-clock"></i><span>PLAYER 3</span></div>
+                  <div class="mp-player-icon mp-inactive"><i class="fas fa-user-clock"></i><span>PLAYER 4</span></div>
+                </div>
+                <div class="mp-center-text">
+                  <i class="fas fa-lock"></i>
+                  <span>MULTIPLAYER LOCKED</span>
+                </div>
+              </div>
+            </div>
+            <div class="mp-badge-float">
+              <i class="fas fa-wifi"></i>
+              <span>ONLINE CO-OP</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SUBSCRIPTION SECTION ======================== -->
+  <section id="subscription" class="subscription-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// EXCLUSIVE ACCESS</div>
+        <h2 class="section-title">Join the <span class="red-text">Darkness</span></h2>
+        <div class="section-divider center"></div>
+        <p class="section-sub">Premium access to the full Echoes of Isolation multiplayer experience — coming with the
+          official launch.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-4 reveal-up" data-delay="0">
+          <div class="price-card">
+            <div class="price-tier">INVESTIGATOR</div>
+            <div class="price-amount">Free</div>
+            <div class="price-period">Demo Access</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Solo Campaign (1 Hour)</li>
+              <li><i class="fas fa-check"></i> Voice Detection Demo</li>
+              <li><i class="fas fa-check"></i> 2 Enemies Encountered</li>
+              <li class="disabled"><i class="fas fa-times"></i> Multiplayer</li>
+              <li class="disabled"><i class="fas fa-times"></i> Full Campaign</li>
+            </ul>
+            <button class="btn-horror btn-ghost w-100" onclick="showComingSoon()">
+              <span class="btn-text">COMING SOON</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-up" data-delay="200">
+          <div class="price-card price-featured">
+            <div class="price-popular-badge">MOST POPULAR</div>
+            <div class="price-tier">SURVIVOR</div>
+            <div class="price-amount">$14<span>.99</span></div>
+            <div class="price-period">One-Time Purchase</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Full Solo Campaign</li>
+              <li><i class="fas fa-check"></i> All 3 Enemies</li>
+              <li><i class="fas fa-check"></i> All 5 Wards</li>
+              <li><i class="fas fa-check"></i> Multiplayer Co-op</li>
+              <li class="disabled"><i class="fas fa-times"></i> Exclusive Content</li>
+            </ul>
+            <button class="btn-horror btn-explore w-100" onclick="showComingSoon()">
+              <span class="btn-text">COMING SOON</span>
+              <span class="btn-glow"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 reveal-up" data-delay="400">
+          <div class="price-card">
+            <div class="price-tier">THE CONDEMNED</div>
+            <div class="price-amount">$29<span>.99</span></div>
+            <div class="price-period">Lifetime Access</div>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Everything in Survivor</li>
+              <li><i class="fas fa-check"></i> All Future DLC</li>
+              <li><i class="fas fa-check"></i> Exclusive Horror Modes</li>
+              <li><i class="fas fa-check"></i> Behind-the-Scenes Access</li>
+              <li><i class="fas fa-check"></i> Priority Multiplayer Queue</li>
+            </ul>
+            <button class="btn-horror btn-ghost w-100" onclick="showComingSoon()">
+              <span class="btn-text">COMING SOON</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== TEAM SECTION ======================== -->
+  <section id="team" class="team-section section-pad">
+    <div class="container">
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// THE CREATORS</div>
+        <h2 class="section-title">Minds Behind <span class="red-text">the Horror</span></h2>
+        <div class="section-divider center"></div>
+      </div>
+
+      <div class="row g-5 justify-content-center mb-5">
+        <div class="col-md-6 col-lg-5 reveal-up" data-delay="0">
+          <div class="team-card">
+            <div class="team-card-glow"></div>
+            <div class="team-avatar">
+              <div class="avatar-ring">
+                <span class="avatar-initials">HM</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <h4 class="team-name">Huzaifa Mumtaz</h4>
+              <div class="team-role">Lead Game Developer</div>
+              <div class="team-tags">
+                <span>Voice Detection & Audio Input</span>
+                <span>Player Control & Core Mechanics</span>
+                <span>Escape & Ritual Objectives</span>
+              </div>
+              <p class="team-bio">Architected the core gameplay systems, voice-detection
+                audio pipeline. Responsible for the overall technical framework of Hospital.</p>
+              <div class="team-socials">
+                <a href="https://github.com/Zaifa25" class="ts-link" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/huzaifa-mumtaz-99b985343/" class="ts-link" target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:huzaifamumtaz.work@gmail.com" class="ts-link"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-5 reveal-up" data-delay="200">
+          <div class="team-card">
+            <div class="team-card-glow"></div>
+            <div class="team-avatar">
+              <div class="avatar-ring">
+                <span class="avatar-initials">AK</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <h4 class="team-name">Abdullah Khalil</h4>
+              <div class="team-role">Lead Environment & Systems Designer</div>
+              <div class="team-tags">
+                <span>Environment Design</span>
+                <span>Enemy Behavior</span>
+                <span>Testing & optimization</span>
+              </div>
+              <p class="team-bio">Designed the five hospital wards, paranormal event systems, puzzle mechanics, and the
+                complete audio-visual horror atmosphere of Echoes of Isolation.</p>
+              <div class="team-socials">
+                <a href="#" class="ts-link" target="_blank" rel="noopener noreferrer">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/abdullah-khalil-5b3b683a4" class="ts-link" target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:dflora794@gmail.com" class="ts-link"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supervisor Section -->
+      <div class="supervisor-section reveal-up">
+        <div class="sup-label">PROJECT SUPERVISOR</div>
+        <div class="sup-card">
+          <div class="sup-glow"></div>
+          <div class="sup-avatar">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <div class="sup-info">
+            <h3 class="sup-name">Dr. Ehsan Ullah Munir</h3>
+            <div class="sup-title">Supervisor — Department of Computer Science</div>
+            <div class="sup-university">
+              <i class="fas fa-university"></i>
+              COMSATS University Islamabad, Wah Campus
+            </div>
+            <p class="sup-desc">Under the academic guidance of Dr. Ehsan Ullah Munir, Echoes of Isolation was developed
+              as a research-driven Final Year Project exploring novel human-computer interaction through
+              voice-responsive game mechanics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="site-footer">
+    <div class="footer-top-fade"></div>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <i class="fas fa-ghost"></i>
+            <span>ECHOES OF ISOLATION</span>
+          </div>
+          <p class="footer-tagline">A Voice-Responsive Paranormal Horror Game</p>
+          <p class="footer-uni">COMSATS University Islamabad, Wah Campus</p>
+        </div>
+        <div class="footer-links">
+          <a href="#intro">Story</a>
+          <a href="#features">Features</a>
+          <a href="#enemies">Enemies</a>
+          <a href="#gameplay">Gameplay</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#team">Team</a>
+        </div>
+        <div class="footer-quote">
+          <i class="fas fa-quote-left"></i>
+          <span>In silence, you survive. In sound, you die.</span>
+          <i class="fas fa-quote-right"></i>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Echoes of Isolation — Huzaifa Mumtaz & Abdullah Khalil. Final Year Project.</p>
+        <p class="footer-engine">Powered by <span>Unreal Engine 5</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COMING SOON MODAL -->
+  <div class="modal-overlay" id="comingSoonModal">
+    <div class="cs-modal">
+      <div class="cs-modal-glow"></div>
+      <button class="cs-close" onclick="hideComingSoon()"><i class="fas fa-times"></i></button>
+      <div class="cs-icon"><i class="fas fa-lock"></i></div>
+      <h3>Coming Soon</h3>
+      <p>The multiplayer experience of Echoes of Isolation is currently in active development. Stay tuned for the
+        official launch announcement.</p>
+      <div class="cs-input-group">
+        <input type="email" placeholder="Enter your email address" class="cs-input" />
+        <button class="btn-horror btn-explore" onclick="hideComingSoon()">
+          <span class="btn-text">NOTIFY ME</span>
+          <span class="btn-glow"></span>
+        </button>
+      </div>
+      <div class="cs-bottom">Your soul is registered. We'll be in touch.</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
