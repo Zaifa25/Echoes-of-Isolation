@@ -170,8 +170,8 @@ class FogParticle {
     this.life++;
 
     if (this.life > this.maxLife ||
-        this.x < -this.radius || this.x > W + this.radius ||
-        this.y < -this.radius || this.y > H + this.radius) {
+      this.x < -this.radius || this.x > W + this.radius ||
+      this.y < -this.radius || this.y > H + this.radius) {
       this.reset();
     }
   }
@@ -366,9 +366,8 @@ async function submitEmail() {
   btn.disabled = true;
 
   try {
-    await fetch('https://huzaifa2510.app.n8n.cloud/webhook/5e769a0b-8824-486a-896a-6e359f598afe', {
+    const response = await fetch('https://huzaifa2510.app.n8n.cloud/webhook/5e769a0b-8824-486a-896a-6e359f598afe', {
       method: 'POST',
-      mode: 'no-cors',                          // 👈 KEY FIX
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: email,
@@ -376,6 +375,8 @@ async function submitEmail() {
         source: 'Echoes of Isolation - Coming Soon Modal'
       }),
     });
+
+    if (!response.ok) throw new Error('Failed');
 
     // no-cors won't throw on success, so we assume success here
     btnText.textContent = 'REGISTERED!';
