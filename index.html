@@ -94,7 +94,7 @@
         <div class="scroll-arrow">
           <i class="fas fa-chevron-down"></i>
         </div>
-        <span>SCROLL TO DESCEND</span>
+        <span></span>
       </div>
     </div>
 
@@ -293,7 +293,7 @@
             <div class="fc-icon"><i class="fas fa-map-marked-alt"></i></div>
             <h5>Exploration System</h5>
             <p>Non-linear hospital layout with 5 unique wards, hidden rooms, lore journals, and environmental
-              storytelling. Every corner reveals a fragment of Ashwood's dark history.</p>
+              storytelling. Every corner reveals a fragment of Hospital's dark history.</p>
             <div class="fc-tag">WORLD</div>
           </div>
         </div>
@@ -503,13 +503,15 @@
 
       <div class="gallery-grid reveal-up">
         <div class="gallery-item gi-large">
-          <div class="gallery-img" style="background-image: url('images/enemy.png');">
+          <div class="gallery-img" style="background-image: url('images/intro.png');">
             <div class="gi-overlay">
               <div class="gi-label">Main Entrance Hall</div>
             </div>
 
           </div>
         </div>
+
+
 
         <div class="gallery-item">
           <div class="gallery-img" style="background-image: url('images/hall.jpg');">
@@ -528,7 +530,14 @@
 
           </div>
         </div>
+        <div class="gallery-item">
+          <div class="gallery-img" style="background-image: url('images/1.jpg');">
+            <div class="gi-overlay">
+              <div class="gi-label">The Chapel</div>
+            </div>
 
+          </div>
+        </div>
         <div class="gallery-item">
           <div class="gallery-img" style="background-image: url('images/3.jpg');">
             <div class="gi-overlay">
@@ -539,23 +548,55 @@
         </div>
 
         <div class="gallery-item gi-wide">
-          <div class="gallery-img" style="background-image: url('images/4.jpg');">
+          <div class="gallery-img" style="background-image: url('images/2.jpg');">
             <div class="gi-overlay">
               <div class="gi-label">The Ritual Chamber</div>
             </div>
 
           </div>
         </div>
-
         <div class="gallery-item">
-          <div class="gallery-img" style="background-image: url('images/4.jpg');">
+          <div class="gallery-img" style="background-image: url('images/dead.png');">
             <div class="gi-overlay">
-              <div class="gi-label">The Basement Corridors</div>
+              <div class="gi-label">Dead Animation</div>
             </div>
 
           </div>
         </div>
       </div>
+    </div>
+  </section>
+  <!-- ======================== GAMEPLAY VIDEO SECTION ======================== -->
+  <section id="trailer" class="trailer-section section-pad">
+    <div class="container">
+
+      <div class="text-center mb-5 reveal-up">
+        <div class="section-label">// OFFICIAL GAMEPLAY</div>
+
+        <h2 class="section-title">
+          Enter The <span class="red-text">Nightmare</span>
+        </h2>
+
+        <div class="section-divider center"></div>
+
+        <p class="section-sub">
+          Experience the atmosphere, fear, and voice-responsive horror of
+          Echoes of Isolation.
+        </p>
+      </div>
+
+      <div class="trailer-wrapper reveal-up" data-delay="200">
+
+        <div class="trailer-glow"></div>
+
+        <video class="game-trailer" controls muted loop playsinline poster="images/trailer-thumb.jpg">
+          <source src="videos/gameplay.mp4" type="video/mp4">
+
+          Your browser does not support the video tag.
+        </video>
+
+      </div>
+
     </div>
   </section>
 
@@ -888,7 +929,7 @@
         official launch announcement.</p>
       <div class="cs-input-group">
         <input type="email" placeholder="Enter your email address" class="cs-input" />
-        <button class="btn-horror btn-explore" onclick="hideComingSoon()">
+        <button class="btn-horror btn-explore" onclick="submitEmail()">
           <span class="btn-text">NOTIFY ME</span>
           <span class="btn-glow"></span>
         </button>

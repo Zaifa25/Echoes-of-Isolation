@@ -346,6 +346,56 @@ function hideComingSoon() {
   document.body.style.overflow = '';
 }
 
+async function submitEmail() {
+  const input = document.querySelector('.cs-input');
+  const email = input ? input.value.trim() : '';
+
+  if (!email || !email.includes('@')) {
+    input.style.borderColor = 'rgba(255,59,79,0.8)';
+    input.placeholder = 'Enter a valid email address';
+    setTimeout(() => {
+      input.style.borderColor = '';
+      input.placeholder = 'Enter your email address';
+    }, 2000);
+    return;
+  }
+
+  const btn = document.querySelector('.cs-input-group .btn-horror');
+  const btnText = btn.querySelector('.btn-text');
+  btnText.textContent = 'SENDING...';
+  btn.disabled = true;
+
+  try {
+    await fetch('https://n8n.srv1198858.hstgr.cloud/webhook/5e769a0b-8824-486a-896a-6e359f598afe', {
+      method: 'POST',
+      mode: 'no-cors',                          // 👈 KEY FIX
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        timestamp: new Date().toISOString(),
+        source: 'Echoes of Isolation - Coming Soon Modal'
+      }),
+    });
+
+    // no-cors won't throw on success, so we assume success here
+    btnText.textContent = 'REGISTERED!';
+    document.querySelector('.cs-bottom').textContent = '✓ Your soul is registered. We\'ll be in touch.';
+    input.value = '';
+
+    setTimeout(() => {
+      hideComingSoon();
+      btnText.textContent = 'NOTIFY ME';
+      btn.disabled = false;
+      document.querySelector('.cs-bottom').textContent = 'Your soul is registered. We\'ll be in touch.';
+    }, 1800);
+
+  } catch (err) {
+    btnText.textContent = 'NOTIFY ME';
+    btn.disabled = false;
+    document.querySelector('.cs-bottom').textContent = 'Something went wrong. Try again.';
+  }
+}
+
 // Close modal on overlay click
 document.getElementById('comingSoonModal').addEventListener('click', (e) => {
   if (e.target === e.currentTarget) hideComingSoon();

@@ -1801,3 +1801,58 @@ div,
   display: block;
   filter: brightness(0.8) contrast(1.1);
 }
+/* ── GAMEPLAY VIDEO SECTION ── */
+
+.trailer-section {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.trailer-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: auto;
+  border: 1px solid rgba(255,59,79,0.15);
+  background: rgba(10,10,10,0.9);
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(255,59,79,0.08);
+}
+
+.trailer-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center,
+    rgba(255,59,79,0.12),
+    transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.game-trailer {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+  object-fit: cover;
+  max-height: 700px;
+}
+
+/* cinematic hover effect */
+
+.trailer-wrapper:hover {
+  transform: translateY(-4px);
+  transition: 0.4s ease;
+  border-color: rgba(255,59,79,0.35);
+}
+
+/* responsive */
+
+@media (max-width: 768px) {
+
+  .game-trailer {
+    max-height: 320px;
+  }
+
+}
