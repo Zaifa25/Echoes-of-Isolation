@@ -366,7 +366,7 @@ async function submitEmail() {
   btn.disabled = true;
 
   try {
-    await fetch('https://huzaifa2510.app.n8n.cloud/webhook-test/5e769a0b-8824-486a-896a-6e359f598afe', {
+    await fetch('https://huzaifa2510.app.n8n.cloud/webhook/5e769a0b-8824-486a-896a-6e359f598afe', {
       method: 'POST',
       mode: 'no-cors',                          // 👈 KEY FIX
       headers: { 'Content-Type': 'application/json' },
