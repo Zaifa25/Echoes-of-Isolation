@@ -1,0 +1,383 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5e769a0b-8824-486a-896a-6e359f598afe",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -112,
+        0
+      ],
+      "id": "c75e1401-793c-46cd-828a-fde9d93165f0",
+      "name": "Webhook",
+      "webhookId": "5e769a0b-8824-486a-896a-6e359f598afe"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.Email }}",
+        "subject": "Explore the Joy of Darkness",
+        "message": "=Hello Survivor,<br><br>\n\nYour email has been successfully registered for exclusive updates about Echoes of Isolation — the upcoming voice-responsive paranormal horror experience developed at COMSATS University Islamabad.<br><br>\n\nYou are now among the first to receive:<br><br>\n\n• Multiplayer launch announcements<br>\n• Early gameplay reveals<br>\n• Development updates<br>\n• Beta testing opportunities<br>\n• Exclusive behind-the-scenes content<br><br>\n\nInside Ashwood Psychiatric Hospital, silence is survival.<br><br>\n\nStay alert. The darkness is getting closer.<br><br>\n\n— Huzaifa Mumtaz & Abdullah Khalil<br>\nEchoes of Isolation Development Team",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1056,
+        240
+      ],
+      "id": "8ea156e0-e52a-4237-9732-076b5dab1af2",
+      "name": "Send a message",
+      "webhookId": "d87c64d1-46a3-4bd6-baa9-61bb17bd710d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GOQ334hRwbjLPk2v",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Body is already parsed by n8n, no need to JSON.parse\nconst bodyData = $input.first().json.body;\n\nreturn {\n  email: bodyData.email,\n  timestamp: bodyData.timestamp,\n  source: bodyData.source\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        112,
+        16
+      ],
+      "id": "cc2ae140-a4da-4b01-9ba3-95df468fc0ce",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78",
+          "mode": "list",
+          "cachedResultName": "Untitled spreadsheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $json.email }}"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Already Register",
+              "displayName": "Already Register",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        320,
+        16
+      ],
+      "id": "3b021aaa-dbc2-4420-bda3-77a16d82ba26",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oyOzo2Cb3DegpuMF",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "7df8a24e-652a-4dbe-a928-ced0dfe5de4d",
+              "leftValue": "={{ $json['Already Register'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        768,
+        16
+      ],
+      "id": "458bf862-543c-462f-a398-06b038c385ad",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78",
+          "mode": "list",
+          "cachedResultName": "Untitled spreadsheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $('Code in JavaScript').item.json.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        544,
+        16
+      ],
+      "id": "e53c71ca-d219-4baa-879d-6657adfc1887",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oyOzo2Cb3DegpuMF",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78",
+          "mode": "list",
+          "cachedResultName": "Untitled spreadsheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Jd9a-w90bKfS-cpkX7QJDFAxXaoCqDlgLHsYccTkr78/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Email": "={{ $('Code in JavaScript').item.json.email }}",
+            "Already Register": "TRUE"
+          },
+          "matchingColumns": [
+            "Email"
+          ],
+          "schema": [
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Already Register",
+              "displayName": "Already Register",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1296,
+        80
+      ],
+      "id": "368ebb7f-34af-45eb-8f27-f57bd4845d62",
+      "name": "Append or update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oyOzo2Cb3DegpuMF",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get row(s) in sheet').item.json.Email }}",
+        "subject": "Already Register",
+        "message": "Hello Survivor,<br><br>\n\nOur records show that this email address is already registered for updates about <b>Echoes of Isolation</b>.<br><br>\n\nYou are already part of the official waitlist and will continue receiving:<br><br>\n\n• Launch announcements<br>\n• Multiplayer updates<br>\n• Beta testing invitations<br>\n• Exclusive gameplay reveals<br>\n• Future development news<br><br>\n\nThere is no need to register again.<br><br>\n\nThank you for your continued interest in Echoes of Isolation.<br><br>\n\n<i>Stay silent. Stay alive.</i><br><br>\n\nBest Regards,<br>\nHuzaifa Mumtaz & Abdullah Khalil<br>\nEchoes of Isolation Development Team<br>\nCOMSATS University Islamabad\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1040,
+        -192
+      ],
+      "id": "6cc90409-4786-4510-943e-72ab25c006a0",
+      "name": "Send a message1",
+      "webhookId": "463059c0-d2e7-49e9-a20f-09b21aefd952",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "GOQ334hRwbjLPk2v",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "54431b16-d12a-47b0-a0f5-bdb903fba904",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a45907f760d092fdf39297a7e53d345b2925f600c98ab6eec7ff9d4dacacd87d"
+  },
+  "id": "bVzC61klsPhzwiNv",
+  "tags": []
+}
